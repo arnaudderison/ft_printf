@@ -6,6 +6,7 @@ SRC = 	ft_printf.c \
 		srcs/ft_pointer.c \
 		srcs/ft_putchar_fd.c \
 		srcs/ft_putstr_fd.c \
+		srcs/ft_putnbr_fd.c \
 		srcs/ft_strlen.c
 
 OBJ = $(SRC:.c=.o)
