@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:27:39 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/04 14:03:15 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/04 15:04:38 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 
 void	main(void)
 {
-	ft_printf("je suis un test %ctrinf -> %s", 's', "voici le chaine ");
+	int nb = 2;
+
+	ft_printf("Le nombes est %d\n", 15);
+	ft_printf("%%\n");
 }
