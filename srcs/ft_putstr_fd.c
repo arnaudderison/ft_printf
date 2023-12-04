@@ -6,13 +6,13 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:40:51 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/04 08:36:24 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/04 09:31:14 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+int	ft_putstr_fd(char const *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	return (write(fd, s, ft_strlen(s)));
 }
