@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 08:28:24 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/04 13:55:45 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/04 15:04:14 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	is_flag(const char c)
 		return (1);
 	return (0);
 }
+
 static int	proc_command(va_list args, char flag, int *len)
 {
 	int	tmp;
@@ -28,6 +29,12 @@ static int	proc_command(va_list args, char flag, int *len)
 		tmp = ft_putchar_fd(va_arg(args, int), 1);
 	else if (flag == 's')
 		tmp = ft_putstr_fd(va_arg(args, char *), 1);
+	else if (flag == 'p')
+		tmp = ft_pointer(va_arg(args, size_t));
+	else if (flag == 'd' || flag == 'i')
+		tmp = ft_putnbr_fd(va_arg(args, int), 1);
+	else if (flag == '%')
+		tmp = ft_putchar_fd('%', 1);
 	else
 		return (-1);
 	if (tmp < 0)
@@ -63,6 +70,7 @@ static int	parse_strs(const char *strs, va_list args, int *len_ptr)
 	*len_ptr = len;
 	return (0);
 }
+
 int	ft_printf(const char *strs, ...)
 {
 	va_list	args;
