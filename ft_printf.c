@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 08:28:24 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/05 17:06:08 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/05 20:43:34 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	parse_strs(const char *strs, va_list args, int *len_ptr)
 		}
 		else
 		{
-			len = ft_putchar_fd(strs[i], 1);
+			len += ft_putchar_fd(strs[i], 1);
 			if (len < 0)
 				return (-1);
 		}
