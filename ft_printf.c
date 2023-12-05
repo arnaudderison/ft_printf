@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 08:28:24 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/05 14:54:31 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/05 16:21:25 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ static int	proc_command(va_list args, char flag, int *len)
 		tmp = ft_putnbr_fd(va_arg(args, int), 1);
 	else if (flag == 'u')
 		tmp = ft_u_putnbr_fd(va_arg(args, unsigned int), 1);
+	else if (flag == 'x')
+		tmp = ft_puthex_fd(va_arg(args, int), 0, 1);
+	else if (flag == 'X')
+		tmp = ft_puthex_fd(va_arg(args, int), 1, 1);
 	else if (flag == '%')
 		tmp = ft_putchar_fd('%', 1);
 	else
@@ -83,6 +87,7 @@ int	ft_printf(const char *strs, ...)
 	if (parse_strs(strs, args, &len) < 0)
 	{
 		va_end(args);
+		write(1, "E", 1);
 		return (-1);
 	}
 	va_end(args);
