@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 12:27:39 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/05 15:00:41 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/05 15:04:47 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,4 @@ void	main(void)
 	ft_printf("Le nombes est %d\n", 15);
 	ft_printf("%%\n");
 	ft_printf("Le nombre unsigned est %u - %u - %u\n", 15, 65535, 4294967295);
-	printf("Le nombre unsigned est %u - %u - %u\n", 15, 65536, 4294967294);
 }
