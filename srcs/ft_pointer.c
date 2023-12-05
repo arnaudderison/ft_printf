@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 09:00:59 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/04 12:33:58 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/05 17:07:59 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	ft_pointer(size_t addr)
 	}
 	else
 	{
-		if ((result = print_pointer(addr, "0123456789abcdef")) < 0)
+		result = print_pointer(addr, "0123456789abcdef");
+		if (result < 0)
 			return (-1);
 		len += result;
 	}
