@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 08:28:38 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/04 14:54:57 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/05 14:52:08 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int		ft_putstr_fd(char const *s, int fd);
 int		ft_pointer(size_t addr);
 size_t	ft_strlen(const char *str);
 int		ft_putnbr_fd(int nb, int fd);
+int		ft_u_putnbr_fd(unsigned int nb, int fd);
 
 #endif
