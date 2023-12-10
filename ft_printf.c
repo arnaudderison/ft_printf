@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 08:28:24 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/05 20:43:34 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/10 17:15:02 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static int	proc_command(va_list args, char flag, int *len)
 		return (*len += tmp);
 	return (*len);
 }
-
 static int	parse_strs(const char *strs, va_list args, int *len_ptr)
 {
 	int	i;
