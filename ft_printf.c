@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 08:28:24 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/10 17:15:02 by arnaud           ###   ########.fr       */
+/*   Updated: 2023/12/11 11:23:51 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	ft_printf(const char *strs, ...)
 	if (parse_strs(strs, args, &len) < 0)
 	{
 		va_end(args);
-		write(1, "E", 1);
 		return (-1);
 	}
 	va_end(args);
