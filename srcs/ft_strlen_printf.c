@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strlen_printf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 08:32:20 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/04 12:33:49 by arnaud           ###   ########.fr       */
+/*   Created: 2023/12/04 12:34:41 by arnaud            #+#    #+#             */
+/*   Updated: 2023/12/16 20:07:00 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_putchar_fd(char c, int fd)
+size_t	ft_strlen_printf(const char *str)
 {
-	return (write(fd, &c, 1));
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

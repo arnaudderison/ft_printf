@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_u_putnbr_fd.c                                   :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 14:39:36 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/05 14:51:47 by arnaud           ###   ########.fr       */
+/*   Created: 2023/12/05 16:02:27 by arnaud            #+#    #+#             */
+/*   Updated: 2023/12/16 20:06:44 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int	ft_u_nbr_len(unsigned int nb)
+size_t	ft_strlcpy_printf(char *dst, const char *src, size_t size)
 {
-	int	len;
+	size_t	i;
+	size_t	len;
 
-	len = 1;
-	while (nb > 9)
-	{
-		len++;
-		nb /= 10;
-	}
-	return (len);
-}
-
-int	ft_u_putnbr_fd(unsigned int nb, int fd)
-{
-	int	len;
-
-	len = ft_u_nbr_len(nb);
-	if (nb > 9)
-	{
-		if (ft_u_putnbr_fd(nb / 10, fd) < 0)
-			return (-1);
-	}
-	if (ft_putchar_fd(nb % 10 + '0', fd) < 0)
-		return (-1);
+	i = -1;
+	len = ft_strlen_printf(src);
+	if (!size)
+		return (len);
+	while (++i < size - 1 && src[i])
+		dst[i] = src[i];
+	dst[i] = 0;
 	return (len);
 }

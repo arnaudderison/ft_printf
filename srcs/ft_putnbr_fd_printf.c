@@ -1,59 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pointer.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd_printf.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 09:00:59 by arnaud            #+#    #+#             */
-/*   Updated: 2023/12/16 20:05:21 by arnaud           ###   ########.fr       */
+/*   Created: 2023/10/23 14:46:24 by arnaud            #+#    #+#             */
+/*   Updated: 2023/12/16 20:06:22 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int	print_pointer(size_t adrr, char *base)
+static int	ft_int_len(int n)
 {
-	char	string[17];
-	int		len;
-	int		i;
+	int	len;
 
-	len = 0;
-	i = 0;
-	while (adrr != 0)
+	len = 1;
+	if (n < 0)
 	{
-		string[i++] = base[adrr % 16];
-		adrr /= 16;
+		len++;
+		n *= -1;
 	}
-	while (i--)
+	while (n > 9)
 	{
-		if (ft_putchar_fd_printf(string[i], 1) < 0)
-			return (-1);
-		len += 1;
+		len++;
+		n /= 10;
 	}
 	return (len);
 }
 
-int	ft_pointer(size_t addr)
+int	ft_putnbr_fd_printf(int nb, int fd)
 {
 	int	len;
-	int	result;
 
-	if (write(1, "0x", 2) < 0)
+	len = ft_int_len(nb);
+	if (nb < 0)
+	{
+		if (ft_putchar_fd_printf('-', fd) < 0)
+			return (-1);
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		if (ft_putnbr_fd_printf(nb / 10, fd) < 0)
+			return (-1);
+	}
+	if (ft_putchar_fd_printf(48 + nb % 10, fd) < 0)
 		return (-1);
-	len = 2;
-	if (addr == 0)
-	{
-		if (write(1, "0", 1) < 0)
-			return (-1);
-		len++;
-	}
-	else
-	{
-		result = print_pointer(addr, "0123456789abcdef");
-		if (result < 0)
-			return (-1);
-		len += result;
-	}
 	return (len);
 }
