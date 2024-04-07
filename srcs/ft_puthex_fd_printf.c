@@ -6,12 +6,11 @@
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:51:46 by arnaud            #+#    #+#             */
-/*   Updated: 2024/04/07 16:35:09 by aderison         ###   ########.fr       */
+/*   Updated: 2024/04/07 16:39:02 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
 static int	ft_len_hex(unsigned int nb)
 {
