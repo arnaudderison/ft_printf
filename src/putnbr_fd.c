@@ -1,50 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_fd_printf.c                              :+:      :+:    :+:   */
+/*   ft_putnbr_fd_printf.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 15:51:46 by arnaud            #+#    #+#             */
-/*   Updated: 2024/04/11 17:38:35 by aderison         ###   ########.fr       */
+/*   Created: 2023/10/23 14:46:24 by arnaud            #+#    #+#             */
+/*   Updated: 2024/04/11 17:49:57 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	ft_len_hex(unsigned int nb)
+static int	ft_int_len(int n)
 {
-	int	len;
+	int				len;
+	unsigned int	nb;
 
-	len = 0;
-	if (nb < 16)
-		return (1);
-	while (nb != 0)
+	len = 1;
+	if (n < 0)
 	{
-		nb /= 16;
 		len++;
+		nb = (unsigned int)(-n);
+	}
+	else
+		nb = (unsigned int)(n);
+	while (nb > 9)
+	{
+		len++;
+		nb /= 10;
 	}
 	return (len);
 }
 
-int	ft_puthex_fd_printf(int nb, int isMaj, int fd)
+int	ft_putnbr_fd_printf(int nb, int fd)
 {
-	char			base[17];
-	unsigned int	num;
 	int				len;
+	unsigned int	num;
 
-	if (isMaj == 0)
-		ft_strlcpy_printf(base, "0123456789abcdef", 17);
-	else
-		ft_strlcpy_printf(base, "0123456789ABCDEF", 17);
-	num = (unsigned int)nb;
-	len = ft_len_hex(num);
-	if (num > 15)
+	len = ft_int_len(nb);
+	if (nb < 0)
 	{
-		if (ft_puthex_fd_printf(num / 16, isMaj, fd) < 0)
+		if (putchar_fd('-', fd) < 0)
+			return (-1);
+		num = (unsigned int)(-nb);
+	}
+	else
+		num = (unsigned int)(nb);
+	if (num >= 10)
+	{
+		if (ft_putnbr_fd_printf(num / 10, fd) < 0)
 			return (-1);
 	}
-	if (ft_putchar_fd_printf(base[num % 16], fd) < 0)
+	if (putchar_fd(num % 10 + '0', fd) < 0)
 		return (-1);
 	return (len);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd_printf.c                             :+:      :+:    :+:   */
+/*   putchar_fd.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../include/ft_printf.h"
 
-int	ft_putchar_fd_printf(char c, int fd)
+int	putchar_fd(char c, int fd)
 {
 	return (write(fd, &c, 1));
 }

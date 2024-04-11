@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy_printf.c                                :+:      :+:    :+:   */
+/*   strlcpy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:02:27 by arnaud            #+#    #+#             */
-/*   Updated: 2024/04/11 17:38:47 by aderison         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:46:36 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-size_t	ft_strlcpy_printf(char *dst, const char *src, size_t size)
+size_t	strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	len;
@@ -20,7 +20,7 @@ size_t	ft_strlcpy_printf(char *dst, const char *src, size_t size)
 	if (!dst || !src)
 		return (0);
 	i = -1;
-	len = ft_strlen_printf(src);
+	len = strlen(src);
 	if (!size)
 		return (len);
 	while (++i < size - 1 && src[i])

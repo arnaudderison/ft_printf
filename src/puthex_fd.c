@@ -1,41 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_u_putnbr_fd_printf.c                            :+:      :+:    :+:   */
+/*   ft_puthex_fd_printf.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 14:39:36 by arnaud            #+#    #+#             */
-/*   Updated: 2024/04/11 17:38:53 by aderison         ###   ########.fr       */
+/*   Created: 2023/12/05 15:51:46 by arnaud            #+#    #+#             */
+/*   Updated: 2024/04/11 17:50:15 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	ft_u_nbr_len(unsigned int nb)
+static int	ft_len_hex(unsigned int nb)
 {
 	int	len;
 
-	len = 1;
-	while (nb > 9)
+	len = 0;
+	if (nb < 16)
+		return (1);
+	while (nb != 0)
 	{
+		nb /= 16;
 		len++;
-		nb /= 10;
 	}
 	return (len);
 }
 
-int	ft_u_putnbr_fd_printf(unsigned int nb, int fd)
+int	ft_puthex_fd_printf(int nb, int isMaj, int fd)
 {
-	int	len;
+	char			base[17];
+	unsigned int	num;
+	int				len;
 
-	len = ft_u_nbr_len(nb);
-	if (nb > 9)
+	if (isMaj == 0)
+		strlcpy(base, "0123456789abcdef", 17);
+	else
+		strlcpy(base, "0123456789ABCDEF", 17);
+	num = (unsigned int)nb;
+	len = ft_len_hex(num);
+	if (num > 15)
 	{
-		if (ft_u_putnbr_fd_printf(nb / 10, fd) < 0)
+		if (ft_puthex_fd_printf(num / 16, isMaj, fd) < 0)
 			return (-1);
 	}
-	if (ft_putchar_fd_printf(nb % 10 + '0', fd) < 0)
+	if (putchar_fd(base[num % 16], fd) < 0)
 		return (-1);
 	return (len);
 }

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd_printf.c                              :+:      :+:    :+:   */
+/*   strlen.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 14:40:51 by arnaud            #+#    #+#             */
-/*   Updated: 2024/04/11 17:38:41 by aderison         ###   ########.fr       */
+/*   Created: 2023/12/04 12:34:41 by arnaud            #+#    #+#             */
+/*   Updated: 2024/04/11 17:38:50 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	ft_putstr_fd_printf(char const *s, int fd)
+size_t	strlen(const char *str)
 {
-	if (!s)
-		return (write(fd, "(null)", ft_strlen_printf("(null)")));
-	return (write(fd, s, ft_strlen_printf(s)));
+	size_t	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

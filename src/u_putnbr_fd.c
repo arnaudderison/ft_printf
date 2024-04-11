@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd_printf.c                              :+:      :+:    :+:   */
+/*   u_putnbr_fd.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 14:46:24 by arnaud            #+#    #+#             */
-/*   Updated: 2024/04/11 17:38:38 by aderison         ###   ########.fr       */
+/*   Created: 2023/12/05 14:39:36 by arnaud            #+#    #+#             */
+/*   Updated: 2024/04/11 17:38:53 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	ft_int_len(int n)
+static int	u_nbr_len(unsigned int nb)
 {
-	int				len;
-	unsigned int	nb;
+	int	len;
 
 	len = 1;
-	if (n < 0)
-	{
-		len++;
-		nb = (unsigned int)(-n);
-	}
-	else
-		nb = (unsigned int)(n);
 	while (nb > 9)
 	{
 		len++;
@@ -33,26 +25,17 @@ static int	ft_int_len(int n)
 	return (len);
 }
 
-int	ft_putnbr_fd_printf(int nb, int fd)
+int	u_putnbr_fd(unsigned int nb, int fd)
 {
-	int				len;
-	unsigned int	num;
+	int	len;
 
-	len = ft_int_len(nb);
-	if (nb < 0)
+	len = u_nbr_len(nb);
+	if (nb > 9)
 	{
-		if (ft_putchar_fd_printf('-', fd) < 0)
-			return (-1);
-		num = (unsigned int)(-nb);
-	}
-	else
-		num = (unsigned int)(nb);
-	if (num >= 10)
-	{
-		if (ft_putnbr_fd_printf(num / 10, fd) < 0)
+		if (u_putnbr_fd(nb / 10, fd) < 0)
 			return (-1);
 	}
-	if (ft_putchar_fd_printf(num % 10 + '0', fd) < 0)
+	if (putchar_fd(nb % 10 + '0', fd) < 0)
 		return (-1);
 	return (len);
 }

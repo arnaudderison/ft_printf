@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 08:28:24 by arnaud            #+#    #+#             */
-/*   Updated: 2024/04/11 17:38:58 by aderison         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:53:49 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/ft_printf.h"
+#include "../include/ft_printf.h"
 
 static int	is_flag(const char c)
 {
@@ -26,21 +26,21 @@ static int	proc_command(va_list args, char flag, int *len)
 
 	tmp = 0;
 	if (flag == 'c')
-		tmp = ft_putchar_fd_printf(va_arg(args, int), 1);
+		tmp = putchar_fd(va_arg(args, int), 1);
 	else if (flag == 's')
 		tmp = ft_putstr_fd_printf(va_arg(args, char *), 1);
 	else if (flag == 'p')
-		tmp = ft_pointer(va_arg(args, size_t));
+		tmp = pointer(va_arg(args, size_t));
 	else if (flag == 'd' || flag == 'i')
 		tmp = ft_putnbr_fd_printf(va_arg(args, int), 1);
 	else if (flag == 'u')
-		tmp = ft_u_putnbr_fd_printf(va_arg(args, unsigned int), 1);
+		tmp = u_putnbr_fd(va_arg(args, unsigned int), 1);
 	else if (flag == 'x')
 		tmp = ft_puthex_fd_printf(va_arg(args, int), 0, 1);
 	else if (flag == 'X')
 		tmp = ft_puthex_fd_printf(va_arg(args, int), 1, 1);
 	else if (flag == '%')
-		tmp = ft_putchar_fd_printf('%', 1);
+		tmp = putchar_fd('%', 1);
 	if (tmp < 0)
 		return (-1);
 	else
@@ -66,7 +66,7 @@ static int	parse_strs(const char *strs, va_list args, int *len_ptr)
 		}
 		else
 		{
-			len += ft_putchar_fd_printf(strs[i], 1);
+			len += putchar_fd(strs[i], 1);
 			if (len < 0)
 				return (-1);
 		}

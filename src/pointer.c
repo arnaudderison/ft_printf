@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pointer.c                                       :+:      :+:    :+:   */
+/*   pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -27,14 +27,14 @@ static int	print_pointer(size_t adrr, char *base)
 	}
 	while (i--)
 	{
-		if (ft_putchar_fd_printf(string[i], 1) < 0)
+		if (putchar_fd(string[i], 1) < 0)
 			return (-1);
 		len += 1;
 	}
 	return (len);
 }
 
-int	ft_pointer(size_t addr)
+int	pointer(size_t addr)
 {
 	int	len;
 	int	result;

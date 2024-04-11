@@ -2,15 +2,15 @@ NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = 	ft_printf.c \
-		src/ft_pointer.c \
-		src/ft_putchar_fd_printf.c \
-		src/ft_putstr_fd_printf.c \
-		src/ft_putnbr_fd_printf.c \
-		src/ft_strlen_printf.c \
-		src/ft_u_putnbr_fd_printf.c \
-		src/ft_strlcpy_printf.c \
-		src/ft_puthex_fd_printf.c
+SRC = 	src/main.c \
+		src/pointer.c \
+		src/putchar_fd.c \
+		src/putstr_fd.c \
+		src/putnbr_fd.c \
+		src/strlen.c \
+		src/u_putnbr_fd.c \
+		src/strlcpy.c \
+		src/puthex_fd.c
 
 OBJ = $(SRC:.c=.o)
 
